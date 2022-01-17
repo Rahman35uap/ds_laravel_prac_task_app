@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::get('/categories',[CategoryController::class,'index'])->middleware('auth');
+Route::get('/categories/create',[CategoryController::class,'create'])->middleware('auth');
+Route::post('/categories',[CategoryController::class,'store'])->middleware('auth');
+
+require __DIR__ . '/auth.php';

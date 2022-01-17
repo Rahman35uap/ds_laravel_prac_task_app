@@ -10,13 +10,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<body>*
+<body>
 
     @include('layouts.navigation')
 
     <div class="container">
-        <h3>Basic Navbar Example</h3>
-        <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+        @yield('contents')
     </div>
 
 </body>
