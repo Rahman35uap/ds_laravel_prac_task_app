@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +23,21 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/categories',[CategoryController::class,'index'])->middleware('auth');
-Route::get('/categories/create',[CategoryController::class,'create'])->middleware('auth');
-Route::post('/categories',[CategoryController::class,'store'])->middleware('auth');
+// Route::get('/categories', [CategoryController::class, 'index'])->middleware('auth');
+// Route::get('/categories/create', [CategoryController::class, 'create'])->middleware('auth');
+// Route::post('/categories', [CategoryController::class, 'store'])->middleware('auth');
+// Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->middleware('auth');
+// Route::put('/categories/{id}', [CategoryController::class, 'update'])->middleware('auth');
+// Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->middleware('auth');
+
+Route::resource('/categories',CategoryController::class)->middleware('auth');
+
+Route::get('/tasks',[TaskController::class,'index'])->middleware('auth');
+Route::get('/tasks/create',[TaskController::class,'create'])->middleware('auth');
+Route::post('/tasks',[TaskController::class,'store'])->middleware('auth');
+Route::get('/tasks/{id}/edit',[TaskController::class,'edit'])->middleware('auth');
+Route::put('/tasks/{id}',[TaskController::class,'update'])->middleware('auth');
+Route::delete('/tasks/{id}',[TaskController::class,'destroy'])->middleware('auth');
+
 
 require __DIR__ . '/auth.php';

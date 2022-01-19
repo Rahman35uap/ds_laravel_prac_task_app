@@ -1,18 +1,19 @@
 @extends('layouts.app')
 @section('contents')
-<h3>Add new Category</h3>
+<h3>Edit Category</h3>
 <hr>
-<form class="form-horizontal" action="{{ url('/categories') }}" method="POST">
+<form class="form-horizontal" action="{{ url("/categories/$category->id") }}" method="POST">
+    @method('put')
     @csrf
     <div class="form-group">
         <label class="control-label col-sm-2">Category Name:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" value="{{ old('category_name') }}" placeholder="Enter Category"
+            <input type="text" class="form-control" value="{{ $category->name }}" placeholder="Enter Category"
                 name="category_name">
         </div>
     </div>
     <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">ADD</button>
+        <button type="submit" class="btn btn-default">Edit</button>
     </div>
     </div>
 </form>
